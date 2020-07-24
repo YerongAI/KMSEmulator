@@ -8,7 +8,7 @@ namespace KMSEmulator.KMS.V5
 
         public override uint BodyLength
         {
-            get 
+            get
             {
                 return (uint)(4 + Salt.Length + Encrypted.Length);
             }

@@ -83,7 +83,7 @@ namespace KMSEmulator
                 _mDefaultKMSHWID = value;
             }
         }
-     
+
         /// <summary>
         /// Generate Randomized KMS PID based on KMS Client instead of sending the Default KMS PID
         /// </summary>

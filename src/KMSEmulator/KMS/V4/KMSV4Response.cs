@@ -7,8 +7,9 @@ namespace KMSEmulator.KMS.V4
 
         public override uint BodyLength
         {
-            get { 
-                return (uint)(Response.Length + Hash.Length); 
+            get
+            {
+                return (uint)(Response.Length + Hash.Length);
             }
         }
     }

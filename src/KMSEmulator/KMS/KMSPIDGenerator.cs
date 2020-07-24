@@ -9,40 +9,40 @@ namespace KMSEmulator.KMS
         private static readonly Random Random = new Random();
 
         // Application IDs
-        private readonly Guid _appIDWindows                     = new Guid("55C92734-D682-4D71-983E-D6EC3F16059F");
-        private readonly Guid _appIDOffice2010                  = new Guid("59A52881-A989-479D-AF46-F275C6370663");
-        private readonly Guid _appIDOffice2013                  = new Guid("0FF1CE15-A989-479D-AF46-F275C6370663");
-        private readonly Guid _appIDOffice2016                  = new Guid("0FF1CE15-A989-479D-AF46-F275C6370663");
-        private readonly Guid _appIDOffice2019                  = new Guid("0FF1CE15-A989-479D-AF46-F275C6370663");
+        private readonly Guid _appIDWindows = new Guid("55C92734-D682-4D71-983E-D6EC3F16059F");
+        private readonly Guid _appIDOffice2010 = new Guid("59A52881-A989-479D-AF46-F275C6370663");
+        private readonly Guid _appIDOffice2013 = new Guid("0FF1CE15-A989-479D-AF46-F275C6370663");
+        private readonly Guid _appIDOffice2016 = new Guid("0FF1CE15-A989-479D-AF46-F275C6370663");
+        private readonly Guid _appIDOffice2019 = new Guid("0FF1CE15-A989-479D-AF46-F275C6370663");
 
         // KMS Counted IDs
-        private readonly Guid _kmsCountedIDOffice2010           = new Guid("e85af946-2e25-47b7-83e1-bebcebeac611"); // Office 2010
-        private readonly Guid _kmsCountedIDOffice2013           = new Guid("e6a6f1bf-9d40-40c3-aa9f-c77ba21578c0"); // Office 2013
-        private readonly Guid _kmsCountedIDOffice2016           = new Guid("85b5f61b-320b-4be3-814a-b76b2bfafc82"); // Office 2016
-        private readonly Guid _kmsCountedIDOffice2019           = new Guid("617d9eb1-ef36-4f82-86e0-a65ae07b96c6"); // Office 2019
-        private readonly Guid _kmsCountedIDWindowsVista         = new Guid("212a64dc-43b1-4d3d-a30c-2fc69d2095c6"); // Windows Vista
-        private readonly Guid _kmsCountedIDWindows7             = new Guid("7fde5219-fbfa-484a-82c9-34d1ad53e856"); // Windows 7
-        private readonly Guid _kmsCountedIDWindows8Retail       = new Guid("bbb97b3b-8ca4-4a28-9717-89fabd42c4ac"); // Windows 8 (Retail)
-        private readonly Guid _kmsCountedIDWindows8Volume       = new Guid("3c40b358-5948-45af-923b-53d21fcc7e79"); // Windows 8 (Volume)
-        private readonly Guid _kmsCountedIDWindows81Retail      = new Guid("6d646890-3606-461a-86ab-598bb84ace82"); // Windows 8.1 (Retail)
-        private readonly Guid _kmsCountedIDWindows81Volume      = new Guid("cb8fc780-2c05-495a-9710-85afffc904d7"); // Windows 8.1 (Volume)
-        private readonly Guid _kmsCountedIDWindows10Retail      = new Guid("e1c51358-fe3e-4203-a4a2-3b6b20c9734e"); // Windows 10 (Retail)
-        private readonly Guid _kmsCountedIDWindows10Volume      = new Guid("58e2134f-8e11-4d17-9cb2-91069c151148"); // Windows 10 (Volume)
-        private readonly Guid _kmsCountedIDWindows10Unknown     = new Guid("d27cd636-1962-44e9-8b4f-27b6c23efb85"); // Windows 10 (Unknown)
-        private readonly Guid _kmsCountedIDWindows10ChinaGov    = new Guid("7ba0bf23-d0f5-4072-91d9-d55af5a481b6"); // Windows 10 China Government
-        private readonly Guid _kmsCountedIDWindows10LTSB2015    = new Guid("58e2134f-8e11-4d17-9cb2-91069c151148"); // Windows 10 LTSB 2015
-        private readonly Guid _kmsCountedIDWindows10LTSB2016    = new Guid("969fe3c0-a3ec-491a-9f25-423605deb365"); // Windows 10 LTSB 2016
-        private readonly Guid _kmsCountedIDWindows10LTSC2019    = new Guid("11b15659-e603-4cf1-9c1f-f0ec01b81888"); // Windows 10 LTSC 2019
-        private readonly Guid _kmsCountedIDWindowsServer2008A   = new Guid("33e156e4-b76f-4a52-9f91-f641dd95ac48"); // Windows Server 2008 A (Web and HPC)
-        private readonly Guid _kmsCountedIDWindowsServer2008B   = new Guid("8fe53387-3087-4447-8985-f75132215ac9"); // Windows Server 2008 B (Standard and Enterprise)
-        private readonly Guid _kmsCountedIDWindowsServer2008C   = new Guid("8a21fdf3-cbc5-44eb-83f3-fe284e6680a7"); // Windows Server 2008 C (Datacenter)
+        private readonly Guid _kmsCountedIDOffice2010 = new Guid("e85af946-2e25-47b7-83e1-bebcebeac611"); // Office 2010
+        private readonly Guid _kmsCountedIDOffice2013 = new Guid("e6a6f1bf-9d40-40c3-aa9f-c77ba21578c0"); // Office 2013
+        private readonly Guid _kmsCountedIDOffice2016 = new Guid("85b5f61b-320b-4be3-814a-b76b2bfafc82"); // Office 2016
+        private readonly Guid _kmsCountedIDOffice2019 = new Guid("617d9eb1-ef36-4f82-86e0-a65ae07b96c6"); // Office 2019
+        private readonly Guid _kmsCountedIDWindowsVista = new Guid("212a64dc-43b1-4d3d-a30c-2fc69d2095c6"); // Windows Vista
+        private readonly Guid _kmsCountedIDWindows7 = new Guid("7fde5219-fbfa-484a-82c9-34d1ad53e856"); // Windows 7
+        private readonly Guid _kmsCountedIDWindows8Retail = new Guid("bbb97b3b-8ca4-4a28-9717-89fabd42c4ac"); // Windows 8 (Retail)
+        private readonly Guid _kmsCountedIDWindows8Volume = new Guid("3c40b358-5948-45af-923b-53d21fcc7e79"); // Windows 8 (Volume)
+        private readonly Guid _kmsCountedIDWindows81Retail = new Guid("6d646890-3606-461a-86ab-598bb84ace82"); // Windows 8.1 (Retail)
+        private readonly Guid _kmsCountedIDWindows81Volume = new Guid("cb8fc780-2c05-495a-9710-85afffc904d7"); // Windows 8.1 (Volume)
+        private readonly Guid _kmsCountedIDWindows10Retail = new Guid("e1c51358-fe3e-4203-a4a2-3b6b20c9734e"); // Windows 10 (Retail)
+        private readonly Guid _kmsCountedIDWindows10Volume = new Guid("58e2134f-8e11-4d17-9cb2-91069c151148"); // Windows 10 (Volume)
+        private readonly Guid _kmsCountedIDWindows10Unknown = new Guid("d27cd636-1962-44e9-8b4f-27b6c23efb85"); // Windows 10 (Unknown)
+        private readonly Guid _kmsCountedIDWindows10ChinaGov = new Guid("7ba0bf23-d0f5-4072-91d9-d55af5a481b6"); // Windows 10 China Government
+        private readonly Guid _kmsCountedIDWindows10LTSB2015 = new Guid("58e2134f-8e11-4d17-9cb2-91069c151148"); // Windows 10 LTSB 2015
+        private readonly Guid _kmsCountedIDWindows10LTSB2016 = new Guid("969fe3c0-a3ec-491a-9f25-423605deb365"); // Windows 10 LTSB 2016
+        private readonly Guid _kmsCountedIDWindows10LTSC2019 = new Guid("11b15659-e603-4cf1-9c1f-f0ec01b81888"); // Windows 10 LTSC 2019
+        private readonly Guid _kmsCountedIDWindowsServer2008A = new Guid("33e156e4-b76f-4a52-9f91-f641dd95ac48"); // Windows Server 2008 A (Web and HPC)
+        private readonly Guid _kmsCountedIDWindowsServer2008B = new Guid("8fe53387-3087-4447-8985-f75132215ac9"); // Windows Server 2008 B (Standard and Enterprise)
+        private readonly Guid _kmsCountedIDWindowsServer2008C = new Guid("8a21fdf3-cbc5-44eb-83f3-fe284e6680a7"); // Windows Server 2008 C (Datacenter)
         private readonly Guid _kmsCountedIDWindowsServer2008R2A = new Guid("0fc6ccaf-ff0e-4fae-9d08-4370785bf7ed"); // Windows Server 2008 R2 A (Web and HPC)
         private readonly Guid _kmsCountedIDWindowsServer2008R2B = new Guid("ca87f5b6-cd46-40c0-b06d-8ecd57a4373f"); // Windows Server 2008 R2 B (Standard and Enterprise)
         private readonly Guid _kmsCountedIDWindowsServer2008R2C = new Guid("b2ca2689-a9a8-42d7-938d-cf8e9f201958"); // Windows Server 2008 R2 C (Datacenter)
-        private readonly Guid _kmsCountedIDWindowsServer2012    = new Guid("8665cb71-468c-4aa3-a337-cb9bc9d5eaac"); // Windows Server 2012
-        private readonly Guid _kmsCountedIDWindowsServer2012R2  = new Guid("8456efd3-0c04-4089-8740-5b7238535a65"); // Windows Server 2012 R2
-        private readonly Guid _kmsCountedIDWindowsServer2016    = new Guid("6e9fc069-257d-4bc4-b4a7-750514d32743"); // Windows Server 2016
-        private readonly Guid _kmsCountedIDWindowsServer2019    = new Guid("8449b1fb-f0ea-497a-99ab-66ca96e9a0f5"); // Windows Server 2019
+        private readonly Guid _kmsCountedIDWindowsServer2012 = new Guid("8665cb71-468c-4aa3-a337-cb9bc9d5eaac"); // Windows Server 2012
+        private readonly Guid _kmsCountedIDWindowsServer2012R2 = new Guid("8456efd3-0c04-4089-8740-5b7238535a65"); // Windows Server 2012 R2
+        private readonly Guid _kmsCountedIDWindowsServer2016 = new Guid("6e9fc069-257d-4bc4-b4a7-750514d32743"); // Windows Server 2016
+        private readonly Guid _kmsCountedIDWindowsServer2019 = new Guid("8449b1fb-f0ea-497a-99ab-66ca96e9a0f5"); // Windows Server 2019
 
         // Host OS Build and Type
         struct HostOS
@@ -93,7 +93,7 @@ namespace KMSEmulator.KMS
                 new HostOS { Type = 3612, OSBuild = 14393, MinimumDay = 286, MinimumYear = 2016},  // Windows Server 2016 RTM:    10/12/2016 RTM GA
                 new HostOS { Type = 3612, OSBuild = 17763, MinimumDay = 275, MinimumYear = 2018}   // Windows Server 2019 RTM:    10/02/2018 RTM GA
             };
-            
+
             // Product Specific KeyConfig
             List<PkeyConfig> pkeyConfigList = new List<PkeyConfig>
             {

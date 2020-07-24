@@ -12,7 +12,7 @@ namespace KMSEmulator.Logging
         {
             if (_path == null)
             {
-                _path = GetExePath() + "\\KMSEmulator.log";
+                _path = $"{GetExePath()}\\KMSEmulator.log";
             }
 
             if (timestamp)

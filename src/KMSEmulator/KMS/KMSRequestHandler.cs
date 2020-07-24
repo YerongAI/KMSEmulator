@@ -32,7 +32,7 @@ namespace KMSEmulator.KMS
             {
                 return new byte[0];
             }
-            
+
             return messagehandler.HandleRequest(request);
         }
 

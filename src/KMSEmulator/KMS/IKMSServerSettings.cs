@@ -10,6 +10,6 @@
         uint VLActivationInterval { get; set; }
         uint VLRenewalInterval { get; set; }
         bool KillProcessOnPort { get; set; }
-        
+
     }
 }

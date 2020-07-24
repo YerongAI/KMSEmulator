@@ -5,7 +5,7 @@ using KMSEmulator.Logging;
 
 namespace KMSEmulator.NET
 {
-	class Program
+    class Program
     {
         private static readonly ConsoleLogger Logger = new ConsoleLogger();
         private static readonly ManualResetEvent QuitEvent = new ManualResetEvent(false);
@@ -16,20 +16,19 @@ namespace KMSEmulator.NET
 
             // Set KMS Server Settings
             KMSServerSettings kmsSettings = new KMSServerSettings
-			{
-				KillProcessOnPort = false,
-				GenerateRandomKMSPID = true,
-				DefaultKMSHWID = "364F463A8863D35F"
-			};
+            {
+                KillProcessOnPort = false,
+                GenerateRandomKMSPID = true,
+                DefaultKMSHWID = "364F463A8863D35F"
+            };
 
-			// Start KMS Server
-			KMSServer.Start(Logger, kmsSettings);
+            // Start KMS Server
+            KMSServer.Start(Logger, kmsSettings);
             QuitEvent.WaitOne();
             Logger.LogMessage("Service is stopped.");
         }
 
         #region
-
         private static void RegisterHandlers()
         {
             try
@@ -62,8 +61,6 @@ namespace KMSEmulator.NET
             Logger.LogMessage("Unloading...");
             QuitEvent.Set();
         }
-
         #endregion
-
     }
 }

@@ -11,7 +11,7 @@ namespace KMSEmulator.Logging
         {
             if (timestamp)
             {
-                LogBuffer.AppendLine(DateTime.Now.ToString("s") + "\t" + message);
+                LogBuffer.AppendLine($"{DateTime.Now.ToString("s")}\t{message}");
             }
             else
             {

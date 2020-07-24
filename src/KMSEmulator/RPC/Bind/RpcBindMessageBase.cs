@@ -1,6 +1,6 @@
 namespace KMSEmulator.RPC.Bind
 {
-    class RpcBindMessageBase :RpcMessageBase
+    class RpcBindMessageBase : RpcMessageBase
     {
         public ushort MaxXmitFrag { get; set; }
         public ushort MaxRecvFrag { get; set; }
