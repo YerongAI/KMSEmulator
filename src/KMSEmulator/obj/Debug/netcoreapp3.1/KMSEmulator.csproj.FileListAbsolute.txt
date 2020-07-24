@@ -1,8 +1,0 @@
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\bin\Debug\netcoreapp3.1\KMSEmulator.deps.json
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\bin\Debug\netcoreapp3.1\KMSEmulator.dll
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\bin\Debug\netcoreapp3.1\KMSEmulator.pdb
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\obj\Debug\netcoreapp3.1\KMSEmulator.AssemblyInfoInputs.cache
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\obj\Debug\netcoreapp3.1\KMSEmulator.AssemblyInfo.cs
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\obj\Debug\netcoreapp3.1\KMSEmulator.csproj.CoreCompileInputs.cache
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\obj\Debug\netcoreapp3.1\KMSEmulator.dll
-C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator\obj\Debug\netcoreapp3.1\KMSEmulator.pdb
