@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "KMSEmulator.NET/1.0.0": {
+        "dependencies": {
+          "KMSEmulator": "1.0.0"
+        },
+        "runtime": {
+          "KMSEmulator.NET.dll": {}
+        }
+      },
+      "KMSEmulator/1.0.0": {
+        "runtime": {
+          "KMSEmulator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "KMSEmulator.NET/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "KMSEmulator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

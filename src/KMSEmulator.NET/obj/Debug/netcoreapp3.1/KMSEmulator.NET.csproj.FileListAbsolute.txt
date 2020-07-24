@@ -1,0 +1,17 @@
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.NET.exe
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.NET.dll.config
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.NET.deps.json
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.NET.runtimeconfig.json
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.NET.runtimeconfig.dev.json
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.NET.dll
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.NET.pdb
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.dll
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\bin\Debug\netcoreapp3.1\KMSEmulator.pdb
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.csprojAssemblyReference.cache
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.AssemblyInfoInputs.cache
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.AssemblyInfo.cs
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.csproj.CoreCompileInputs.cache
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.csproj.CopyComplete
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.dll
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.pdb
+C:\Users\Yerong\Desktop\KmsEmulator-master\KmsEmulator-master\KMSEmulator.NET\obj\Debug\netcoreapp3.1\KMSEmulator.NET.genruntimeconfig.cache
