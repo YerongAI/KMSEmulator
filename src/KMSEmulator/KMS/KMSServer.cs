@@ -23,8 +23,8 @@ namespace KMSEmulator.KMS
 
         private static byte[] CreateKMSResponseBytes(KMSResponse response)
         {
-            using MemoryStream stream = new MemoryStream();
-            using BinaryWriter binaryWriter = new BinaryWriter(stream);
+            using MemoryStream stream = new();
+            using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(response.Version);
             byte[] kmsPidArray = System.Text.Encoding.Unicode.GetBytes(response.KMSPID + "\0");
             binaryWriter.Write(kmsPidArray.Length);
@@ -41,11 +41,11 @@ namespace KMSEmulator.KMS
 
         private KMSResponse CreateKMSResponse(KMSRequest kmsRequest, IKMSServerSettings serverSettings, ILogger logger)
         {
-            KMSResponse response = new KMSResponse { Version = kmsRequest.Version };
+            KMSResponse response = new() { Version = kmsRequest.Version };
             string kmsPID;
             if (serverSettings.GenerateRandomKMSPID)
             {
-                KMSPIDGenerator generator = new KMSPIDGenerator();
+                KMSPIDGenerator generator = new();
                 kmsPID = generator.CreateKMSPID(kmsRequest);
                 logger.LogMessage("KMS PID: " + kmsPID);
                 logger.LogMessage("Application ID: " + kmsRequest.ApplicationId);
@@ -69,9 +69,9 @@ namespace KMSEmulator.KMS
 
         private static KMSRequest CreateKmsRequest(byte[] decrypted)
         {
-            using MemoryStream stream = new MemoryStream(decrypted);
-            using BinaryReader binaryReader = new BinaryReader(stream);
-            KMSRequest kmsRequest = new KMSRequest { Version = binaryReader.ReadUInt32(), IsClientVM = binaryReader.ReadUInt32(), LicenseStatus = binaryReader.ReadUInt32(), GraceTime = binaryReader.ReadUInt32(), ApplicationId = new Guid(binaryReader.ReadBytes(16)), SkuId = new Guid(binaryReader.ReadBytes(16)), KmsCountedId = new Guid(binaryReader.ReadBytes(16)), ClientMachineId = new Guid(binaryReader.ReadBytes(16)), RequiredClientCount = binaryReader.ReadUInt32(), RequestTime = binaryReader.ReadUInt64(), PreviousClientMachineId = binaryReader.ReadBytes(16), MachineName = binaryReader.ReadBytes(64) };
+            using MemoryStream stream = new(decrypted);
+            using BinaryReader binaryReader = new(stream);
+            KMSRequest kmsRequest = new() { Version = binaryReader.ReadUInt32(), IsClientVM = binaryReader.ReadUInt32(), LicenseStatus = binaryReader.ReadUInt32(), GraceTime = binaryReader.ReadUInt32(), ApplicationId = new Guid(binaryReader.ReadBytes(16)), SkuId = new Guid(binaryReader.ReadBytes(16)), KmsCountedId = new Guid(binaryReader.ReadBytes(16)), ClientMachineId = new Guid(binaryReader.ReadBytes(16)), RequiredClientCount = binaryReader.ReadUInt32(), RequestTime = binaryReader.ReadUInt64(), PreviousClientMachineId = binaryReader.ReadBytes(16), MachineName = binaryReader.ReadBytes(64) };
             return kmsRequest;
         }
     }

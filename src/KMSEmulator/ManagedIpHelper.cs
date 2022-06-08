@@ -96,7 +96,7 @@ namespace KMSEmulator
         #region Public Methods
         public static TcpTable GetExtendedTcpTable(bool sorted)
         {
-            List<TcpRow> tcpRows = new List<TcpRow>();
+            List<TcpRow> tcpRows = new();
 
             IntPtr tcpTable = IntPtr.Zero;
             int tcpTableLength = 0;

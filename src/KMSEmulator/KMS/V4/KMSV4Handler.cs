@@ -23,7 +23,7 @@ namespace KMSEmulator.KMS.V4
 
             byte[] hash = GetHashV4(response);
 
-            KMSV4Response kmsv4Response = new KMSV4Response { Response = response, Hash = hash };
+            KMSV4Response kmsv4Response = new() { Response = response, Hash = hash };
 
             byte[] responseBytes = CreateKMSV4ResponseBytes(kmsv4Response);
             return responseBytes;
@@ -31,10 +31,10 @@ namespace KMSEmulator.KMS.V4
 
         private static KMSV4Request CreateKMSV4Request(byte[] kmsRequestData)
         {
-            KMSV4Request kmsRequest = new KMSV4Request();
-            using (MemoryStream stream = new MemoryStream(kmsRequestData))
+            KMSV4Request kmsRequest = new();
+            using (MemoryStream stream = new(kmsRequestData))
             {
-                using BinaryReader binaryReader = new BinaryReader(stream);
+                using BinaryReader binaryReader = new(stream);
                 kmsRequest.BodyLength1 = binaryReader.ReadUInt32();
                 kmsRequest.BodyLength2 = binaryReader.ReadUInt32();
                 kmsRequest.Request = binaryReader.ReadBytes(kmsRequestData.Length - 8 - 16);
@@ -45,8 +45,8 @@ namespace KMSEmulator.KMS.V4
 
         private static byte[] CreateKMSV4ResponseBytes(KMSV4Response responsev4)
         {
-            using MemoryStream stream = new MemoryStream();
-            using BinaryWriter binaryWriter = new BinaryWriter(stream);
+            using MemoryStream stream = new();
+            using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(responsev4.BodyLength);
             binaryWriter.Write(responsev4.Unknown);
             binaryWriter.Write(responsev4.BodyLength2);

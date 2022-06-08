@@ -14,7 +14,7 @@ namespace KMSEmulator
     {
         private TcpListener _tcpListenerIpv6, _tcpListenerIpv4;
         private readonly RpcMessageHandler _messageHandler;
-        private readonly List<Client> _clients = new List<Client>();
+        private readonly List<Client> _clients = new();
         private readonly ILogger _logger;
         internal bool Running;
 
@@ -123,7 +123,7 @@ namespace KMSEmulator
                     byte[] buffer = new byte[tcpClient.ReceiveBufferSize];
 
                     // Add Client to Client List
-                    Client client = new Client(tcpClient, buffer);
+                    Client client = new(tcpClient, buffer);
                     lock (_clients)
                     {
                         _clients.Add(client);
@@ -151,7 +151,10 @@ namespace KMSEmulator
         private void ReadCallback(IAsyncResult result)
         {
             // Get Client Handle
-            if (!(result.AsyncState is Client client)) return;
+            if (result.AsyncState is not Client client) return;
+
+            // Get the client IP address
+            _logger.LogMessage($"IP address is {client.TcpClient.Client.RemoteEndPoint}");
 
             // Read Client Request Message
             NetworkStream networkStream = client.TcpClient.GetStream();

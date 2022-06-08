@@ -71,7 +71,7 @@ namespace KMSEmulator.KMS.V6
             }
             byte[] encryptedResponseData = EncryptV6(responsedata.Concat(GetHmacSha256(hmacKey, xorResponseSalt.Concat(responsedata).ToArray()).Skip(16)).ToArray(), responseSalt);
 
-            KMSV6Response kmsResponse = new KMSV6Response { Version = kmsv6Request.Version, Salt = responseSalt, Encrypted = encryptedResponseData };
+            KMSV6Response kmsResponse = new() { Version = kmsv6Request.Version, Salt = responseSalt, Encrypted = encryptedResponseData };
 
             byte[] encryptedResponse = CreateKMSV6ResponseBytes(kmsResponse);
             return encryptedResponse;
@@ -79,8 +79,8 @@ namespace KMSEmulator.KMS.V6
 
         private static byte[] CreateKMSV6ResponseBytes(KMSV6Response responsev6)
         {
-            using MemoryStream stream = new MemoryStream();
-            using BinaryWriter binaryWriter = new BinaryWriter(stream);
+            using MemoryStream stream = new();
+            using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(responsev6.BodyLength);
             binaryWriter.Write(responsev6.Unknown);
             binaryWriter.Write(responsev6.BodyLength2);
@@ -95,7 +95,7 @@ namespace KMSEmulator.KMS.V6
 
         private static byte[] GetSHA256Hash(byte[] randomSalt)
         {
-            SHA256Managed hasher = new SHA256Managed();
+            SHA256Managed hasher = new();
             return hasher.ComputeHash(randomSalt);
         }
 
@@ -114,10 +114,10 @@ namespace KMSEmulator.KMS.V6
 
         private static KMSV6Request CreateKMSV6Request(byte[] kmsRequestData)
         {
-            KMSV6Request kmsRequest = new KMSV6Request();
-            using (MemoryStream stream = new MemoryStream(kmsRequestData))
+            KMSV6Request kmsRequest = new();
+            using (MemoryStream stream = new(kmsRequestData))
             {
-                using BinaryReader binaryReader = new BinaryReader(stream);
+                using BinaryReader binaryReader = new(stream);
                 kmsRequest.BodyLength1 = binaryReader.ReadUInt32();
                 kmsRequest.BodyLength2 = binaryReader.ReadUInt32();
                 kmsRequest.Version = binaryReader.ReadUInt32();
@@ -132,13 +132,13 @@ namespace KMSEmulator.KMS.V6
         {
             ulong seed = (timeStamp / 0x00000022816889bd) * 0x000000208cbab5ed + 0x3156cd5ac628477a;
 
-            SHA256Managed hasher = new SHA256Managed();
+            SHA256Managed hasher = new();
             return hasher.ComputeHash(BitConverter.GetBytes(seed)).Skip(16).ToArray();
         }
 
         private static byte[] GetHmacSha256(byte[] key, byte[] data)
         {
-            HMACSHA256 hmac = new HMACSHA256(key);
+            HMACSHA256 hmac = new(key);
             return hmac.ComputeHash(data);
         }
     }

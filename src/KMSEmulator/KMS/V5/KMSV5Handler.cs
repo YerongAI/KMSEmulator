@@ -34,7 +34,7 @@ namespace KMSEmulator.KMS.V5
             byte[] responsedata = responseBytes.Concat(randomStuff).Concat(randomSaltHash).ToArray();
             byte[] encryptedResponseData = EncryptV5(responsedata, kmsv5Request.Salt);
 
-            KMSV5Response kmsResponse = new KMSV5Response { Version = kmsv5Request.Version, Salt = kmsv5Request.Salt, Encrypted = encryptedResponseData };
+            KMSV5Response kmsResponse = new() { Version = kmsv5Request.Version, Salt = kmsv5Request.Salt, Encrypted = encryptedResponseData };
 
             byte[] encryptedResponse = CreateKMSV5ResponseBytes(kmsResponse);
             return encryptedResponse;
@@ -42,8 +42,8 @@ namespace KMSEmulator.KMS.V5
 
         private static byte[] CreateKMSV5ResponseBytes(KMSV5Response responsev5)
         {
-            using MemoryStream stream = new MemoryStream();
-            using BinaryWriter binaryWriter = new BinaryWriter(stream);
+            using MemoryStream stream = new();
+            using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(responsev5.BodyLength);
             binaryWriter.Write(responsev5.Unknown);
             binaryWriter.Write(responsev5.BodyLength2);
@@ -58,7 +58,7 @@ namespace KMSEmulator.KMS.V5
 
         private static byte[] GetSHA265Hash(byte[] randomSalt)
         {
-            SHA256Managed hasher = new SHA256Managed();
+            SHA256Managed hasher = new();
             byte[] hash = hasher.ComputeHash(randomSalt);
             return hash;
         }
@@ -72,12 +72,12 @@ namespace KMSEmulator.KMS.V5
                 kmsRequest.Salt.Concat(kmsRequest.EncryptedRequest)
                 .Concat(kmsRequest.Pad).ToArray();
 
-            RijndaelManaged rijndaelManaged = new RijndaelManaged { Key = Key, IV = iv };
+            RijndaelManaged rijndaelManaged = new() { Key = Key, IV = iv };
 
             byte[] decrypted;
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream ms = new())
             {
-                using (CryptoStream cs = new CryptoStream(ms, rijndaelManaged.CreateDecryptor(), CryptoStreamMode.Write))
+                using (CryptoStream cs = new(ms, rijndaelManaged.CreateDecryptor(), CryptoStreamMode.Write))
                 {
                     cs.Write(encrypted, 0, encrypted.Length);
                 }
@@ -88,12 +88,12 @@ namespace KMSEmulator.KMS.V5
 
         private static byte[] EncryptV5(byte[] data, byte[] salt)
         {
-            RijndaelManaged rijndaelManaged = new RijndaelManaged { Key = Key, IV = salt };
+            RijndaelManaged rijndaelManaged = new() { Key = Key, IV = salt };
 
             byte[] encrypted;
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream ms = new())
             {
-                using (CryptoStream cs = new CryptoStream(ms, rijndaelManaged.CreateEncryptor(), CryptoStreamMode.Write))
+                using (CryptoStream cs = new(ms, rijndaelManaged.CreateEncryptor(), CryptoStreamMode.Write))
                 {
                     cs.Write(data, 0, data.Length);
                 }
@@ -104,10 +104,10 @@ namespace KMSEmulator.KMS.V5
 
         private static KMSV5Request CreateKMSV5Request(byte[] kmsRequestData)
         {
-            KMSV5Request kmsRequest = new KMSV5Request();
-            using (MemoryStream stream = new MemoryStream(kmsRequestData))
+            KMSV5Request kmsRequest = new();
+            using (MemoryStream stream = new(kmsRequestData))
             {
-                using BinaryReader binaryReader = new BinaryReader(stream);
+                using BinaryReader binaryReader = new(stream);
                 kmsRequest.BodyLength1 = binaryReader.ReadUInt32();
                 kmsRequest.BodyLength2 = binaryReader.ReadUInt32();
                 kmsRequest.Version = binaryReader.ReadUInt32();

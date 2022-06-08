@@ -25,8 +25,8 @@ namespace KMSEmulator.RPC.Bind
 
         private static byte[] CreateResponseArray(RpcBindResponse response)
         {
-            using MemoryStream stream = new MemoryStream();
-            using BinaryWriter binaryWriter = new BinaryWriter(stream);
+            using MemoryStream stream = new();
+            using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(response.Version);
             binaryWriter.Write(response.VersionMinor);
             binaryWriter.Write(response.PacketType);
@@ -58,7 +58,7 @@ namespace KMSEmulator.RPC.Bind
 
         private RpcBindResponse CreateResponse(RpcBindRequest request)
         {
-            RpcBindResponse response = new RpcBindResponse { Version = request.Version, VersionMinor = request.VersionMinor, PacketType = 0x0c, PacketFlags = 0x13, DataRepresentation = request.DataRepresentation, FragLength = 36 + 3 * 24, AuthLength = request.AuthLength, CallId = request.CallId, MaxXmitFrag = request.MaxXmitFrag, MaxRecvFrag = request.MaxRecvFrag, AssocGroup = 0x1063bf3f };
+            RpcBindResponse response = new() { Version = request.Version, VersionMinor = request.VersionMinor, PacketType = 0x0c, PacketFlags = 0x13, DataRepresentation = request.DataRepresentation, FragLength = 36 + 3 * 24, AuthLength = request.AuthLength, CallId = request.CallId, MaxXmitFrag = request.MaxXmitFrag, MaxRecvFrag = request.MaxRecvFrag, AssocGroup = 0x1063bf3f };
             byte[] secondaryAddress = Encoding.ASCII.GetBytes(_settings.Port + "\0");
             response.SecondaryAddressLength = (ushort)secondaryAddress.Length;
             response.SecondaryAddress = secondaryAddress;
@@ -73,9 +73,9 @@ namespace KMSEmulator.RPC.Bind
 
         private static RpcBindRequest CreateRequest(byte[] b)
         {
-            using MemoryStream stream = new MemoryStream(b);
-            using BinaryReader binaryReader = new BinaryReader(stream);
-            RpcBindRequest request = new RpcBindRequest { Version = binaryReader.ReadByte(), VersionMinor = binaryReader.ReadByte(), PacketType = binaryReader.ReadByte(), PacketFlags = binaryReader.ReadByte(), DataRepresentation = binaryReader.ReadUInt32(), FragLength = binaryReader.ReadUInt16(), AuthLength = binaryReader.ReadUInt16(), CallId = binaryReader.ReadUInt32(), MaxXmitFrag = binaryReader.ReadUInt16(), MaxRecvFrag = binaryReader.ReadUInt16(), AssocGroup = binaryReader.ReadUInt32(), NumCtxItems = binaryReader.ReadUInt32() };
+            using MemoryStream stream = new(b);
+            using BinaryReader binaryReader = new(stream);
+            RpcBindRequest request = new() { Version = binaryReader.ReadByte(), VersionMinor = binaryReader.ReadByte(), PacketType = binaryReader.ReadByte(), PacketFlags = binaryReader.ReadByte(), DataRepresentation = binaryReader.ReadUInt32(), FragLength = binaryReader.ReadUInt16(), AuthLength = binaryReader.ReadUInt16(), CallId = binaryReader.ReadUInt32(), MaxXmitFrag = binaryReader.ReadUInt16(), MaxRecvFrag = binaryReader.ReadUInt16(), AssocGroup = binaryReader.ReadUInt32(), NumCtxItems = binaryReader.ReadUInt32() };
             return request;
         }
     }

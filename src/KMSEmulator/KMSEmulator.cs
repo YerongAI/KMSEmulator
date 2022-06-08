@@ -56,7 +56,7 @@ namespace KMSEmulator
             {
                 Settings = new KMSServerSettings();
             }
-            RpcMessageHandler messageHandler = new RpcMessageHandler(Settings, new KMSRequestHandler(Settings, logger));
+            RpcMessageHandler messageHandler = new(Settings, new KMSRequestHandler(Settings, logger));
 
             // Kill Any Processes using the desired TCP/IP Port
             if (settings != null && settings.KillProcessOnPort)

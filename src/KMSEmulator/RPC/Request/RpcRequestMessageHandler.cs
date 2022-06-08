@@ -23,9 +23,9 @@ namespace KMSEmulator.RPC.Request
 
         private static RpcRequestMessage CreateRequest(byte[] b)
         {
-            using MemoryStream stream = new MemoryStream(b);
-            using BinaryReader binaryReader = new BinaryReader(stream);
-            RpcRequestMessage request = new RpcRequestMessage { Version = binaryReader.ReadByte(), VersionMinor = binaryReader.ReadByte(), PacketType = binaryReader.ReadByte(), PacketFlags = binaryReader.ReadByte(), DataRepresentation = binaryReader.ReadUInt32(), FragLength = binaryReader.ReadUInt16(), AuthLength = binaryReader.ReadUInt16(), CallId = binaryReader.ReadUInt32(), AllocHint = binaryReader.ReadUInt32(), ContextId = binaryReader.ReadUInt16(), Opnum = binaryReader.ReadUInt16() };
+            using MemoryStream stream = new(b);
+            using BinaryReader binaryReader = new(stream);
+            RpcRequestMessage request = new() { Version = binaryReader.ReadByte(), VersionMinor = binaryReader.ReadByte(), PacketType = binaryReader.ReadByte(), PacketFlags = binaryReader.ReadByte(), DataRepresentation = binaryReader.ReadUInt32(), FragLength = binaryReader.ReadUInt16(), AuthLength = binaryReader.ReadUInt16(), CallId = binaryReader.ReadUInt32(), AllocHint = binaryReader.ReadUInt32(), ContextId = binaryReader.ReadUInt16(), Opnum = binaryReader.ReadUInt16() };
             request.Data = binaryReader.ReadBytes((int)request.AllocHint);
             return request;
         }
@@ -35,7 +35,7 @@ namespace KMSEmulator.RPC.Request
             byte[] kmsRequestData = request.Data;
             byte[] responseBytes = RequestMessageHandler.HandleRequest(kmsRequestData);
 
-            RpcResponseMessage response = new RpcResponseMessage { Data = responseBytes };
+            RpcResponseMessage response = new() { Data = responseBytes };
             int envelopeLength = response.Data.Length;
             response.Version = request.Version;
             response.VersionMinor = request.VersionMinor;
@@ -55,8 +55,8 @@ namespace KMSEmulator.RPC.Request
 
         private byte[] CreateResponseArray(RpcResponseMessage response)
         {
-            using MemoryStream stream = new MemoryStream();
-            using BinaryWriter binaryWriter = new BinaryWriter(stream);
+            using MemoryStream stream = new();
+            using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(response.Version);
             binaryWriter.Write(response.VersionMinor);
             binaryWriter.Write(response.PacketType);

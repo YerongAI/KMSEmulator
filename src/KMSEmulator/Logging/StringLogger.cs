@@ -5,7 +5,7 @@ namespace KMSEmulator.Logging
 {
     public class StringLogger : ILogger
     {
-        private static readonly StringBuilder LogBuffer = new StringBuilder();
+        private static readonly StringBuilder LogBuffer = new();
 
         public void LogMessage(string message, bool timestamp = false)
         {

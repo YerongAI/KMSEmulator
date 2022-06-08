@@ -7,15 +7,15 @@ namespace KMSEmulator.NET
 {
     class Program
     {
-        private static readonly ConsoleLogger Logger = new ConsoleLogger();
-        private static readonly ManualResetEvent QuitEvent = new ManualResetEvent(false);
+        private static readonly ConsoleLogger Logger = new();
+        private static readonly ManualResetEvent QuitEvent = new(false);
 
         static void Main(string[] args)
         {
             RegisterHandlers();
 
             // Set KMS Server Settings
-            KMSServerSettings kmsSettings = new KMSServerSettings
+            KMSServerSettings kmsSettings = new()
             {
                 KillProcessOnPort = false,
                 GenerateRandomKMSPID = true,
