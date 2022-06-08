@@ -28,7 +28,7 @@ namespace KMSEmulator.Logging
         private static string GetExePath()
         {
             string fullPath = Assembly.GetEntryAssembly().Location;
-            return fullPath.Substring(0, fullPath.LastIndexOf('\\'));
+            return fullPath[..fullPath.LastIndexOf('\\')];
         }
     }
 }

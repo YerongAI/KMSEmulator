@@ -149,7 +149,7 @@ namespace KMSEmulator
         /// <see cref="http://msdn2.microsoft.com/en-us/library/aa365928.aspx"/>
         /// </summary>
         [DllImport(DllName, SetLastError = true)]
-        public static extern uint GetExtendedTcpTable(IntPtr tcpTable, ref int tcpTableLength, bool sort, int ipVersion, TcpTableType tcpTableType, int reserved);
+        internal static extern uint GetExtendedTcpTable(IntPtr tcpTable, ref int tcpTableLength, bool sort, int ipVersion, TcpTableType tcpTableType, int reserved);
         #endregion
 
         #region Public Enums

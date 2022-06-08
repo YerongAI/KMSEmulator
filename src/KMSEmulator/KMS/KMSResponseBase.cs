@@ -7,7 +7,7 @@
             get;
         }
 
-        public byte[] Unknown
+        public static byte[] Unknown
         {
             get
             {

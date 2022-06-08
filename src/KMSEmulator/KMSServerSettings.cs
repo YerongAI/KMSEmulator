@@ -36,7 +36,7 @@ namespace KMSEmulator
                 // Validate KMS Current Client Count Range
                 if (value > 1000)
                 {
-                    throw new ArgumentOutOfRangeException("value", "KMS Current Client Count must be between 0 and 1000.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "KMS Current Client Count must be between 0 and 1000.");
                 }
                 _mCurrentClientCount = value;
             }
@@ -57,7 +57,7 @@ namespace KMSEmulator
                 // Validate KMS PID Format
                 if (!Regex.IsMatch(value, "^([0-9]{5})-([0-9]{5})-([0-9]{3})-([0-9]{6})-([0-9]{2})-([0-9]{4,5})-([0-9]{4,5}).([0-9]{4})-([0-9]{7})$", RegexOptions.Multiline))
                 {
-                    throw new ArgumentException("Provided value is not a valid KMS PID.", "value");
+                    throw new ArgumentException("Provided value is not a valid KMS PID.", nameof(value));
                 }
                 _mDefaultKMSPID = value;
             }
@@ -78,7 +78,7 @@ namespace KMSEmulator
                 // Validate KMS HWID Format
                 if (!Regex.IsMatch(value, "[a-fA-F0-9]{16}", RegexOptions.Multiline))
                 {
-                    throw new ArgumentException("Provided value is not a valid KMS HWID.", "value");
+                    throw new ArgumentException("Provided value is not a valid KMS HWID.", nameof(value));
                 }
                 _mDefaultKMSHWID = value;
             }
@@ -104,11 +104,11 @@ namespace KMSEmulator
                 // Validate KMS Server TCP/IP Port Range
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("value", "KMS Server TCP/IP Port cannot be less than 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "KMS Server TCP/IP Port cannot be less than 0.");
                 }
                 if (value > 65535)
                 {
-                    throw new ArgumentOutOfRangeException("value", "KMS Server TCP/IP Port cannot be greater than 65535.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "KMS Server TCP/IP Port cannot be greater than 65535.");
                 }
                 _mPort = value;
             }
@@ -128,11 +128,11 @@ namespace KMSEmulator
             {
                 if (value < 15)
                 {
-                    throw new ArgumentOutOfRangeException("value", "KMS Activation Interval cannot be less than 15 minutes.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "KMS Activation Interval cannot be less than 15 minutes.");
                 }
                 if (value > 43200)
                 {
-                    throw new ArgumentOutOfRangeException("value", "KMS Activation Interval cannot be greater than 43200 minutes.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "KMS Activation Interval cannot be greater than 43200 minutes.");
                 }
                 _mVLActivationInterval = value;
             }
@@ -152,11 +152,11 @@ namespace KMSEmulator
             {
                 if (value < 15)
                 {
-                    throw new ArgumentOutOfRangeException("value", "KMS Renewal Interval cannot be less than 15 minutes.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "KMS Renewal Interval cannot be less than 15 minutes.");
                 }
                 if (value > 43200)
                 {
-                    throw new ArgumentOutOfRangeException("value", "KMS Renewal Interval cannot be greater than 43200 minutes.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "KMS Renewal Interval cannot be greater than 43200 minutes.");
                 }
                 _mVLRenewalInterval = value;
             }

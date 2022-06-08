@@ -28,18 +28,12 @@ namespace KMSEmulator.RPC
 
         private IMessageHandler GetMessageHandler(byte messageType)
         {
-            IMessageHandler requestHandler;
-            switch (messageType)
+            IMessageHandler requestHandler = messageType switch
             {
-                case 0x0b:
-                    requestHandler = new RpcBindMessageHandler(Settings);
-                    break;
-                case 0x00:
-                    requestHandler = new RpcRequestMessageHandler(RequestMessageHandler);
-                    break;
-                default:
-                    throw new ApplicationException("Unhandled message type: " + messageType);
-            }
+                0x0b => new RpcBindMessageHandler(Settings),
+                0x00 => new RpcRequestMessageHandler(RequestMessageHandler),
+                _ => throw new ApplicationException("Unhandled message type: " + messageType),
+            };
             return requestHandler;
         }
     }

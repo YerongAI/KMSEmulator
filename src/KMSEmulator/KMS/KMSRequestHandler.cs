@@ -30,7 +30,7 @@ namespace KMSEmulator.KMS
             }
             catch (Exception)
             {
-                return new byte[0];
+                return Array.Empty<byte>();
             }
 
             return messagehandler.HandleRequest(request);

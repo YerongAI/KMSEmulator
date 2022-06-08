@@ -82,7 +82,7 @@ namespace KMSEmulator.KMS.V6
             using MemoryStream stream = new();
             using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(responsev6.BodyLength);
-            binaryWriter.Write(responsev6.Unknown);
+            binaryWriter.Write(KMSResponseBase.Unknown);
             binaryWriter.Write(responsev6.BodyLength2);
             binaryWriter.Write(responsev6.Version);
             binaryWriter.Write(responsev6.Salt);
@@ -95,7 +95,7 @@ namespace KMSEmulator.KMS.V6
 
         private static byte[] GetSHA256Hash(byte[] randomSalt)
         {
-            SHA256Managed hasher = new();
+            var hasher = SHA256.Create();
             return hasher.ComputeHash(randomSalt);
         }
 
@@ -132,7 +132,7 @@ namespace KMSEmulator.KMS.V6
         {
             ulong seed = (timeStamp / 0x00000022816889bd) * 0x000000208cbab5ed + 0x3156cd5ac628477a;
 
-            SHA256Managed hasher = new();
+            var hasher = SHA256.Create();
             return hasher.ComputeHash(BitConverter.GetBytes(seed)).Skip(16).ToArray();
         }
 

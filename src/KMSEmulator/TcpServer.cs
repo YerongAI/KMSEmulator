@@ -17,6 +17,7 @@ namespace KMSEmulator
         private readonly List<Client> _clients = new();
         private readonly ILogger _logger;
         internal bool Running;
+        private bool disposedValue;
 
         /// <summary>
         /// Create a new Instance of TCPServer
@@ -72,14 +73,6 @@ namespace KMSEmulator
                 _tcpListenerIpv4.BeginAcceptTcpClient(AcceptTcpClientCallback, _tcpListenerIpv4);
             }
             Running = true;
-        }
-
-        /// <summary>
-        /// Stop TCP Server when this object is disposed
-        /// </summary>
-        public void Dispose()
-        {
-            Stop();
         }
 
         /// <summary>
@@ -227,6 +220,25 @@ namespace KMSEmulator
                 TcpClient = tcpClient;
                 Buffer = buffer;
             }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Stop();
+                }
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

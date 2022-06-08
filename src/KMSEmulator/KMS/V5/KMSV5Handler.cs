@@ -45,7 +45,7 @@ namespace KMSEmulator.KMS.V5
             using MemoryStream stream = new();
             using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(responsev5.BodyLength);
-            binaryWriter.Write(responsev5.Unknown);
+            binaryWriter.Write(KMSResponseBase.Unknown);
             binaryWriter.Write(responsev5.BodyLength2);
             binaryWriter.Write(responsev5.Version);
             binaryWriter.Write(responsev5.Salt);
@@ -58,7 +58,7 @@ namespace KMSEmulator.KMS.V5
 
         private static byte[] GetSHA265Hash(byte[] randomSalt)
         {
-            SHA256Managed hasher = new();
+            var hasher = SHA256.Create();
             byte[] hash = hasher.ComputeHash(randomSalt);
             return hash;
         }
@@ -72,12 +72,14 @@ namespace KMSEmulator.KMS.V5
                 kmsRequest.Salt.Concat(kmsRequest.EncryptedRequest)
                 .Concat(kmsRequest.Pad).ToArray();
 
-            RijndaelManaged rijndaelManaged = new() { Key = Key, IV = iv };
+            var aes = Aes.Create();
+            aes.IV = iv;
+            aes.Key = Key;
 
             byte[] decrypted;
             using (MemoryStream ms = new())
             {
-                using (CryptoStream cs = new(ms, rijndaelManaged.CreateDecryptor(), CryptoStreamMode.Write))
+                using (CryptoStream cs = new(ms, aes.CreateDecryptor(), CryptoStreamMode.Write))
                 {
                     cs.Write(encrypted, 0, encrypted.Length);
                 }
@@ -88,12 +90,14 @@ namespace KMSEmulator.KMS.V5
 
         private static byte[] EncryptV5(byte[] data, byte[] salt)
         {
-            RijndaelManaged rijndaelManaged = new() { Key = Key, IV = salt };
+            var aes = Aes.Create();
+            aes.IV = salt;
+            aes.Key = Key;
 
             byte[] encrypted;
             using (MemoryStream ms = new())
             {
-                using (CryptoStream cs = new(ms, rijndaelManaged.CreateEncryptor(), CryptoStreamMode.Write))
+                using (CryptoStream cs = new(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
                 {
                     cs.Write(data, 0, data.Length);
                 }

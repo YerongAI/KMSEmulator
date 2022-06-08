@@ -48,7 +48,7 @@ namespace KMSEmulator.KMS.V4
             using MemoryStream stream = new();
             using BinaryWriter binaryWriter = new(stream);
             binaryWriter.Write(responsev4.BodyLength);
-            binaryWriter.Write(responsev4.Unknown);
+            binaryWriter.Write(KMSResponseBase.Unknown);
             binaryWriter.Write(responsev4.BodyLength2);
             binaryWriter.Write(responsev4.Response);
             binaryWriter.Write(responsev4.Hash);
@@ -59,7 +59,7 @@ namespace KMSEmulator.KMS.V4
         }
 
         // Get Hash
-        byte[] GetHashV4(byte[] message)
+        static byte[] GetHashV4(byte[] message)
         {
             uint messageSize = (uint)message.Length;
             byte[] lastBlock = new byte[16];
@@ -88,10 +88,10 @@ namespace KMSEmulator.KMS.V4
             return hash;
         }
 
-        void Hash(byte[] hash) => Array.Copy(AesCrypt.AesEncryptBlock(AesCrypt.V4RoundKeys, hash, 0), hash, 16);
+        static void Hash(byte[] hash) => Array.Copy(AesCrypt.AesEncryptBlock(AesCrypt.V4RoundKeys, hash, 0), hash, 16);
 
         // Xor Buffer
-        void XorBuffer(byte[] source, uint offset, byte[] destination)
+        static void XorBuffer(byte[] source, uint offset, byte[] destination)
         {
             for (uint i = 0; i < 16; i++)
             {

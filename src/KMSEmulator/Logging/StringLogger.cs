@@ -19,7 +19,7 @@ namespace KMSEmulator.Logging
             }
         }
 
-        public string ReadLog(bool erase = true)
+        public static string ReadLog(bool erase = true)
         {
             string log = LogBuffer.ToString();
             if (erase)

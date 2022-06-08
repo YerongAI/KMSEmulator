@@ -8,7 +8,7 @@ namespace KMSEmulator.Logging
         {
             if (timestamp)
             {
-                Console.WriteLine($"{DateTime.Now.ToString("s")}\t{message}");
+                Console.WriteLine($"{DateTime.Now:s}\t{message}");
             }
             else
             {

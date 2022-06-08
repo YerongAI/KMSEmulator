@@ -53,7 +53,7 @@ namespace KMSEmulator.RPC.Request
             return response;
         }
 
-        private byte[] CreateResponseArray(RpcResponseMessage response)
+        private static byte[] CreateResponseArray(RpcResponseMessage response)
         {
             using MemoryStream stream = new();
             using BinaryWriter binaryWriter = new(stream);

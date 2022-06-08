@@ -39,7 +39,7 @@ namespace KMSEmulator.KMS
             return stream.ToArray();
         }
 
-        private KMSResponse CreateKMSResponse(KMSRequest kmsRequest, IKMSServerSettings serverSettings, ILogger logger)
+        private static KMSResponse CreateKMSResponse(KMSRequest kmsRequest, IKMSServerSettings serverSettings, ILogger logger)
         {
             KMSResponse response = new() { Version = kmsRequest.Version };
             string kmsPID;
